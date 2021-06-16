@@ -1,0 +1,86 @@
+
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <% if current_user.is_admin? %>
+    <h1 class="text-primary">The user is an admministrator (testing purposes)</h1>
+  <% else %>
+    <h1 class="text-danger">The user is NOT an admministrator (testing purposes)</h1>
+  <% end %>
+
+  <!-- EDIT USER PROFILE -->
+  <div class="card">
+    <div class="card-header">
+      <h4>Edit Profile</h4>
+    </div>
+    <div class="card-body">
+
+      <div class="field form-group mb-3 form-floating">
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "given-name", class:"form-control", id:"floatingInput1", placeholder:"First Name (Optional)" %>
+        <label class="text-muted" for="floatingInput1">First Name (Optional)</label>
+      </div>
+
+      <div class="field form-group mb-3 form-floating">
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "family-name", class:"form-control", id:"floatingInput2", placeholder:"Last Name (Optional)" %>
+        <label class="text-muted" for="floatingInput2">Last Name (Optional)</label>
+      </div>
+
+      <div class="field form-group mb-3 form-floating">
+        <%= f.telephone_field :phone_number, autofocus: true, autocomplete: "tel", class:"form-control", id:"floatingInput3", placeholder:"Phone Number (Optional)" %>
+        <label class="text-muted" for="floatingInput3">Phone Number (Optional)</label>
+      </div>
+
+
+
+      <div class="field form-group mb-3 form-floating">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"floatingInput4", placeholder:"Email", required:true %>
+        <label class="text-muted" for="floatingInput4">Email</label>
+      </div>
+
+      <div class="field form-group mb-3 form-floating">
+        <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control", id:"floatingInput5", placeholder:"Current Password (we need your current password to confirm your changes)", required:true %>
+        <label class="text-muted" for="floatingInput5">Current Password (we need your current password to confirm your changes)</label>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="field form-group mb-3 form-floating">
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control", id:"floatingInput6", placeholder:"New Password (leave blank if you don't want to change it)", required:true %>
+        <label class="text-muted" for="floatingInput6">New Password (leave blank if you don't want to change it)</label>
+      </div>
+
+      <div class="field form-group mb-3 form-floating">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", id:"floatingInput7", placeholder:"Password Confirmation", required:true %>
+        <label class="text-muted" for="floatingInput7">Password Confirmation</label>
+      </div>
+
+      <div class="actions form-group">
+        <%= f.submit "Update", class:"btn btn-success", :style => 'width: -webkit-fill-available'%>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<br>
+<br>
+
+<!-- DELETE USER ACCOUNT -->
+<div class="card">
+  <div class="card-header">
+    <h4>Delete my Account</h4>
+  </div>
+  <div class="card-body">
+     <h5 class="card-title">Once you delete your account, it is permanently deleted from the database and cannot be restored!</h5>
+    <p><%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger", :style => 'width: -webkit-fill-available' %></p>
+  </div>
+</div>
+
+<br>
+<br>
+
+<div style='margin: 0 250px'>
+  <%= link_to "Back to Home Page", :back, class:"btn btn-dark", :style => 'width: -webkit-fill-available' %>
+</div>

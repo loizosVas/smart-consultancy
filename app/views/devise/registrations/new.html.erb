@@ -1,0 +1,51 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <!-- REGISTER ACCOUNT -->
+  <div class="card">
+    <div class="card-header">
+      <h4>Sign-Up</h4>
+    </div>
+    <div class="card-body">
+
+      <div class="field form-group mb-3 form-floating">
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "given-name", class:"form-control", id:"floatingInput1", placeholder:"First Name (Optional)" %>
+        <label class="text-muted" for="floatingInput1">First Name (Optional)</label>
+      </div>
+
+      <div class="field form-group mb-3 form-floating">
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "family-name", class:"form-control", id:"floatingInput2", placeholder:"Last Name (Optional)" %>
+        <label class="text-muted" for="floatingInput2">Last Name (Optional)</label>
+      </div>
+
+      <div class="field form-group mb-3 form-floating">
+        <%= f.telephone_field :phone_number, autofocus: true, autocomplete: "tel", class:"form-control", id:"floatingInput3", placeholder:"Phone Number (Optional)" %>
+        <label class="text-muted" for="floatingInput3">Phone Number (Optional)</label>
+      </div>
+
+      <div class="field form-group mb-3 form-floating">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"floatingInput4", placeholder:"Email" %>
+        <label class="text-muted" for="floatingInput4">Email</label>
+      </div>
+
+      <div class="field form-group mb-3 form-floating">
+        <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class:"form-control", id:"floatingInput5", placeholder:"Password" %>
+        <label class="text-muted" for="floatingInput5">Password</label>
+      </div>
+
+      <div class="field form-group mb-3 form-floating">
+        <%= f.password_field :password_confirmation, autofocus: true, autocomplete: "new-password", class:"form-control", id:"floatingInput6", placeholder:"Confirm Password" %>
+        <label class="text-muted" for="floatingInput6">Confirm Password</label>
+      </div>
+
+
+
+      <div class="actions">
+        <%= f.submit "Sign up", class:"btn btn-primary", :style => 'width: -webkit-fill-available' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+
